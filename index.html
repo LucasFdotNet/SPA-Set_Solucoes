@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SET Soluções | Engenharia e Processos Industriais</title>
+    <meta name="description" content="Consultoria especializada em processos produtivos industriais, mineração, agregados e reciclagem. Mais de 25 anos de experiência técnica.">
+    <link rel="icon" type="image/png" href="./logo.png">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        grafite: { 800: '#3A3A3A', 900: '#2B2E33' },
+                        azulcinza: { 800: '#465A5A', 900: '#3C4650' },
+                        fundo: '#F4F4F4',
+                        destaque: { 
+                            DEFAULT: '#1A365D', 
+                            hover: '#112240',
+                        },
+                        destaqueClaro: { 
+                            DEFAULT: '#B0E0E6', 
+                            hover: '#D1F0F5',
+                        },
+                        destaqueQuente: { 
+                            DEFAULT: '#B07D4F', 
+                            hover: '#946641',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animação do Carrossel de Clientes Corrigida */
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 25s linear infinite;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            /* Desloca a largura de 6 logos (6 * 250px) para um loop perfeito com as duplicatas */
+            100% { transform: translateX(calc(-250px * 6)); }
+        }
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="font-sans text-grafite-900 bg-fundo antialiased flex flex-col min-h-screen">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                    <!-- Imagem do Logo Adicionada Aqui -->
+                    <img src="./logo.png" alt="Logo SET" class="h-8 w-auto mr-3">
+                    
+                    <span class="text-2xl font-bold text-grafite-900 tracking-tight">SET<span class="text-destaque">.</span></span>
+                    <span class="ml-2 text-sm font-medium text-gray-500 uppercase tracking-widest hidden sm:block border-l border-gray-300 pl-2">Soluções</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" onclick="navigate('home')" class="nav-link text-gray-600 hover:text-destaque font-medium transition-colors">Home</a>
+                    <a href="#sobre" onclick="navigate('sobre')" class="nav-link text-gray-600 hover:text-destaque font-medium transition-colors">Quem somos</a>
+                    <a href="#contato" onclick="navigate('contato')" class="nav-link text-gray-600 hover:text-destaque font-medium transition-colors">Contato</a>
+                    <a href="https://wa.me/5519999787408" target="_blank" class="bg-destaqueQuente hover:bg-destaqueQuente-hover text-white px-5 py-2.5 rounded-md font-semibold transition-colors flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp"></i> Fale conosco
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-destaque focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 pb-4">
+            <a href="#home" onclick="navigate('home')" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-destaque">Home</a>
+            <a href="#sobre" onclick="navigate('sobre')" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-destaque">Quem somos</a>
+            <a href="#contato" onclick="navigate('contato')" class="block px-4 py-3 text-gray-600 hover:bg-gray-50 hover:text-destaque">Contato</a>
+            <div class="px-4 mt-2">
+                <a href="https://wa.me/5519999787408" target="_blank" class="w-full text-center bg-destaqueQuente hover:bg-destaqueQuente-hover text-white px-5 py-3 rounded-md font-semibold block">
+                    <i class="fa-brands fa-whatsapp"></i> Fale conosco
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PÁGINA: HOME -->
+    <main id="page-home" class="page-section active flex-grow pt-20">
+        
+        <!-- Hero Section -->
+        <section class="relative bg-destaque text-white">
+            <div class="absolute inset-0 z-0">
+            <img src="./fundo_home.jpg" alt="Operação Industrial em Pedreira" class="w-full h-full object-cover opacity-30 grayscale">
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-48">
+                <div class="max-w-3xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Soluções em engenharia para máxima eficiência da sua planta
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl font-light">
+                        Consultoria especializada em processos produtivos industriais, mineração, agregados e reciclagem.
+                    </p>
+                    <a href="#contato" onclick="navigate('contato')" class="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-destaqueQuente hover:bg-destaqueQuente-hover rounded-md transition-colors">
+                        Fale com um especialista
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Nós (Resumo) -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="lg:flex lg:items-center lg:justify-between gap-12">
+                    <div class="lg:w-1/2 mb-10 lg:mb-0">
+                        <h2 class="text-3xl font-bold text-destaque mb-4 border-l-4 border-destaque pl-4">Excelência Técnica</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            A <strong>SET Soluções</strong> é uma empresa de consultoria e soluções em processos produtivos industriais e também da mineração, agregados e reciclagem, com um corpo técnico com mais de 25 anos de experiência em aplicações e projetos.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed mb-8">
+                            Buscamos sempre respostas de maior eficiência para os clientes, respeitando a ética profissional, o meio ambiente e as normas regulamentadoras vigentes.
+                        </p>
+                        <a href="#sobre" onclick="navigate('sobre')" class="text-destaque hover:text-destaque-hover font-semibold inline-flex items-center gap-2 group">
+                            Conheça quem somos 
+                            <i class="fa-solid fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div class="lg:w-1/2">
+                        <img src="./20160927_093824-1_d1000.jpg" alt="Engenheiros em análise" class="rounded-lg shadow-xl grayscale hover:grayscale-0 transition-all duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section class="py-20 bg-fundo">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-destaque mb-4">Nossas Soluções</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto">Expertise aplicada para maximizar a sua produtividade industrial e mineral.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow border-t-4 border-transparent hover:border-destaque group">
+                        <div class="w-12 h-12 bg-gray-100 text-destaque rounded-lg flex items-center justify-center mb-6 text-xl group-hover:bg-destaque group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-mountain"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-destaque mb-3">Mineração e Agregados</h3>
+                        <p class="text-gray-600 mb-4 text-sm line-clamp-3">Estudo e ações no processo produtivo para otimização de produtividade e redução de custos operacionais.</p>
+                        <a href="#" class="text-sm font-semibold text-destaque hover:text-grafite-800">Saiba mais <i class="fa-solid fa-angle-right ml-1"></i></a>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow border-t-4 border-transparent hover:border-destaque group">
+                        <div class="w-12 h-12 bg-gray-100 text-destaque rounded-lg flex items-center justify-center mb-6 text-xl group-hover:bg-destaque group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-gem"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-destaque mb-3">Plantas de Ouro</h3>
+                        <p class="text-gray-600 mb-4 text-sm line-clamp-3">Soluções e melhorias no processo de extração e beneficiamento de ouro.</p>
+                        <a href="#" class="text-sm font-semibold text-destaque hover:text-grafite-800">Saiba mais <i class="fa-solid fa-angle-right ml-1"></i></a>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-md transition-shadow border-t-4 border-transparent hover:border-destaque group">
+                        <div class="w-12 h-12 bg-gray-100 text-destaque rounded-lg flex items-center justify-center mb-6 text-xl group-hover:bg-destaque group-hover:text-white transition-colors">
+                            <i class="fa-solid fa-water"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-destaque mb-3">Barragem de Rejeitos</h3>
+                        <p class="text-gray-600 mb-4 text-sm line-clamp-3">Alternativas para filtragem, tratamento de efluentes e destinação de rejeitos, eliminando barragens.</p>
+                        <a href="#" class="text-sm font-semibold text-destaque hover:text-grafite-800">Saiba mais <i class="fa-solid fa-angle-right ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como Trabalhamos -->
+        <section class="py-20 bg-azulcinza-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold mb-4">Como Trabalhamos</h2>
+                    <div class="h-1 w-20 bg-destaqueClaro mx-auto"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center relative z-10">
+                    <div>
+                        <div class="w-16 h-16 border-2 border-destaqueClaro rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-destaqueClaro">1</div>
+                        <h3 class="text-xl font-bold mb-3">Pensamos</h3>
+                        <p class="text-white opacity-95 text-sm leading-relaxed max-w-sm mx-auto">Idealizamos soluções confiáveis que garantem aumento imediato e sustentável de produtividade.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 border-2 border-destaqueClaro rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-destaqueClaro">2</div>
+                        <h3 class="text-xl font-bold mb-3">Executamos</h3>
+                        <p class="text-white opacity-95 text-sm leading-relaxed max-w-sm mx-auto">Fornecemos trabalho técnico e implementamos soluções de engenharia e maquinário com altos padrões de qualidade.</p>
+                    </div>
+                    <div>
+                        <div class="w-16 h-16 border-2 border-destaqueClaro rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold text-destaqueClaro">3</div>
+                        <h3 class="text-xl font-bold mb-3">Garantimos</h3>
+                        <p class="text-white opacity-95 text-sm leading-relaxed max-w-sm mx-auto">Focamos na otimização contínua de resultados e na absoluta continuidade operacional das plantas dos clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Clientes Carousel CORRIGIDO PARA LOGOS SEM FUNDO TRANSPARENTE -->
+        <section class="py-16 bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 text-center">
+                <h2 class="text-2xl font-bold text-gray-400 uppercase tracking-widest text-sm">Empresas que confiam na SET</h2>
+            </div>
+            <div class="relative w-full max-w-6xl mx-auto">
+                <div class="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+                
+                <div class="carousel-track">
+                    <!-- SET 1 -->
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Calcario_Alto_Do_Araguaia.jpg" alt="Calcário Alto do Araguaia" class="max-h-20 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quibrita.png" alt="Quibrita Mineradora" class="max-h-16 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quimassa.png" alt="Quimassa Infraestrutura" class="max-h-14 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+
+                    <!-- SET 2 (Cópia para o scroll infinito funcionar) -->
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Calcario_Alto_Do_Araguaia.jpg" alt="Calcário Alto do Araguaia" class="max-h-20 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quibrita.png" alt="Quibrita Mineradora" class="max-h-16 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quimassa.png" alt="Quimassa Infraestrutura" class="max-h-14 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+
+                    <!-- SET 3 (Cópia) -->
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Calcario_Alto_Do_Araguaia.jpg" alt="Calcário Alto do Araguaia" class="max-h-20 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quibrita.png" alt="Quibrita Mineradora" class="max-h-16 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quimassa.png" alt="Quimassa Infraestrutura" class="max-h-14 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+
+                    <!-- SET 4 (Cópia) -->
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Calcario_Alto_Do_Araguaia.jpg" alt="Calcário Alto do Araguaia" class="max-h-20 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quibrita.png" alt="Quibrita Mineradora" class="max-h-16 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                    <div class="w-[250px] flex-shrink-0 flex items-center justify-center p-4">
+                        <img src="./Quimassa.png" alt="Quimassa Infraestrutura" class="max-h-14 w-auto max-w-[180px] object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300 mix-blend-multiply">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="py-20 bg-fundo border-t border-gray-200">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold text-destaque mb-6">Antes de realizar qualquer investimento na sua planta, uma análise técnica bem elaborada é fundamental.</h2>
+                <p class="text-xl text-gray-600 mb-8">Fale com nossos engenheiros e descubra o verdadeiro potencial da sua operação.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="https://wa.me/5519999787408" target="_blank" class="px-8 py-4 bg-destaqueQuente hover:bg-destaqueQuente-hover text-white rounded font-semibold transition-colors flex items-center justify-center gap-2 shadow">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Chamar no WhatsApp
+                    </a>
+                    <a href="mailto:setmineral@setmineral.com.br" class="px-8 py-4 bg-white border-2 border-destaque text-destaque hover:bg-destaque hover:text-white rounded font-semibold transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-regular fa-envelope"></i> setmineral@setmineral.com.br
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PÁGINA: QUEM SOMOS -->
+    <main id="page-sobre" class="page-section flex-grow pt-20">
+        <section class="bg-destaque text-white py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-bold mb-4">Quem Somos</h1>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">Mais de duas décadas transformando desafios industriais em eficiência operacional.</p>
+            </div>
+        </section>
+        
+        <section class="py-20 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed">
+                    <p class="text-xl mb-6">A <strong class="text-destaque">SET Soluções</strong> é uma referência em consultoria e soluções integradas para processos produtivos industriais, mineração, agregados e reciclagem.</p>
+                    <p class="mb-6">Nosso corpo técnico acumula <strong>mais de 25 anos de experiência</strong> atuando na linha de frente de aplicações e projetos complexos. Nascemos da necessidade do mercado por parceiros técnicos que não apenas diagnostiquem problemas, mas que implementem melhorias reais.</p>
+                    <p class="mb-6">Trabalhamos incessantemente buscando respostas de maior eficiência para os nossos clientes. Nossos pilares fundamentais são o respeito inegociável à ética profissional, a preservação do meio ambiente em todas as nossas intervenções e o cumprimento rigoroso de todas as normas regulamentadoras vigentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nosso Pessoal -->
+        <section class="py-20 bg-fundo border-t border-gray-100">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-destaque mb-4">Nosso Pessoal</h2>
+                    <div class="h-1 w-20 bg-destaqueQuente mx-auto"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    
+                    <!-- Card: Leandro Florindo -->
+                    <div class="bg-white rounded-lg shadow-sm p-8 md:p-10 flex flex-col items-center text-center border border-gray-100 group hover:shadow-md transition-shadow">
+                        <div class="w-32 h-32 mb-6 rounded-full overflow-hidden border-4 border-fundo">
+                            <img src="./foto-leandro.jpg" alt="Leandro Arthur Furini" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <h3 class="text-2xl font-bold text-grafite-900 mb-1">Leandro Arthur Furini</h3>
+                        <p class="text-destaqueQuente font-semibold mb-6">Diretor Técnico e Consultor</p>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
+                            Formado em Engenharia de Produção Mecânica com especialização em gestão de projetos e normas de segurança (NRs 11 e 12). Frequentou curso de administração e negócios nos Estados Unidos (University of Ohio). Possui mais de 25 anos de experiência na indústria, principalmente na área da mineração com equipamentos, processos produtivos, projetos e assistência técnica.
+                        </p>
+                        <div class="w-full pt-6 border-t border-gray-100 flex flex-col space-y-3">
+                            <a href="mailto:leandro.florindo@setmineral.com.br" class="text-sm font-medium text-gray-500 hover:text-destaque transition-colors inline-flex items-center justify-center gap-2">
+                                <i class="fa-regular fa-envelope"></i> leandro.florindo@setmineral.com.br
+                            </a>
+                            <a href="https://www.linkedin.com/in/leandro-arthur-florindo-61704a52/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-[#0A66C2] transition-colors inline-flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-linkedin text-lg"></i> Conectar no LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card: Isabela Florindo -->
+                    <div class="bg-white rounded-lg shadow-sm p-8 md:p-10 flex flex-col items-center text-center border border-gray-100 group hover:shadow-md transition-shadow">
+                        <div class="w-32 h-32 mb-6 rounded-full overflow-hidden border-4 border-fundo">
+                            <img src="./foto-isabela.jpg" alt="Isabela Rodrigues Furini" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300">
+                        </div>
+                        <h3 class="text-2xl font-bold text-grafite-900 mb-1">Isabela Rodrigues Furini</h3>
+                        <p class="text-destaqueQuente font-semibold mb-6">Gerente de Projetos e Consultora</p>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
+                            Formada em Engenharia de Manufatura e pós graduada em Gestão de Projetos, tem experiência em diferentes segmentos da indústria nas áreas de qualidade, logística e planejamento.
+                        </p>
+                        <div class="w-full pt-6 border-t border-gray-100 flex flex-col space-y-3">
+                            <a href="mailto:isabela.florindo@setmineral.com.br" class="text-sm font-medium text-gray-500 hover:text-destaque transition-colors inline-flex items-center justify-center gap-2">
+                                <i class="fa-regular fa-envelope"></i> isabela.florindo@setmineral.com.br
+                            </a>
+                            <a href="https://www.linkedin.com/in/isabela-furini-040616a3/" target="_blank" class="text-sm font-medium text-gray-500 hover:text-[#0A66C2] transition-colors inline-flex items-center justify-center gap-2">
+                                <i class="fa-brands fa-linkedin text-lg"></i> Conectar no LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PÁGINA: CONTATO -->
+    <main id="page-contato" class="page-section flex-grow pt-20">
+        <section class="bg-destaque text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-4xl font-bold mb-4">Vamos conversar sobre o seu projeto</h1>
+                <p class="text-xl text-gray-300 font-light">Nossa equipe de especialistas está pronta para analisar sua planta.</p>
+            </div>
+        </section>
+        <section class="py-20 bg-fundo">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col lg:flex-row border border-gray-100">
+                    <div class="lg:w-3/5 p-8 md:p-12">
+                        <h2 class="text-2xl font-bold text-destaque mb-6">Envie uma mensagem</h2>
+                        <form action="mailto:setmineral@setmineral.com.br" method="POST" enctype="text/plain" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Nome completo *</label><input type="text" required class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Empresa *</label><input type="text" required class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Telefone / WhatsApp *</label><input type="tel" required class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">E-mail corporativo *</label><input type="email" required class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Estado</label><input type="text" class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                                <div><label class="block text-sm font-medium text-gray-700 mb-1">Cidade</label><input type="text" class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></div>
+                            </div>
+                            <div><label class="block text-sm font-medium text-gray-700 mb-1">Como podemos ajudar? *</label><textarea rows="4" required class="w-full px-4 py-3 bg-fundo border border-gray-200 rounded focus:ring-2 focus:ring-destaque focus:border-transparent outline-none"></textarea></div>
+                            <button type="submit" class="w-full md:w-auto px-8 py-3 bg-destaque hover:bg-destaque-hover text-white font-bold rounded transition-colors shadow">Enviar Mensagem</button>
+                        </form>
+                    </div>
+                    <div class="lg:w-2/5 bg-destaque text-white p-8 md:p-12 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-6 border-b border-destaque-hover pb-4">Informações de Contato</h3>
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4"><i class="fa-solid fa-location-dot mt-1 text-destaqueClaro"></i><div><h4 class="font-bold text-sm text-gray-300">Sede</h4><p class="text-sm mt-1">Limeira, SP - Brasil</p></div></div>
+                                <div class="flex items-start gap-4"><i class="fa-solid fa-phone mt-1 text-destaqueClaro"></i><div><h4 class="font-bold text-sm text-gray-300">Telefones</h4><p class="text-sm mt-1">+55 (19) 99978.7408</p></div></div>
+                                <div class="flex items-start gap-4"><i class="fa-solid fa-envelope mt-1 text-destaqueClaro"></i><div><h4 class="font-bold text-sm text-gray-300">E-mail</h4><a href="mailto:setmineral@setmineral.com.br" class="text-sm mt-1 hover:text-destaqueClaro transition-colors">setmineral@setmineral.com.br</a></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="bg-grafite-900 text-gray-400 py-12 border-t border-gray-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 text-sm">
+                <div class="col-span-1 md:col-span-1"><span class="text-2xl font-bold text-white tracking-tight mb-4 block">SET<span class="text-destaque">.</span></span><p class="mb-4">Consultoria e soluções de engenharia em processos produtivos industriais.</p></div>
+                <div><h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Navegação</h4><ul class="space-y-2"><li><a href="#home" onclick="navigate('home')" class="hover:text-destaqueClaro transition-colors">Home</a></li><li><a href="#sobre" onclick="navigate('sobre')" class="hover:text-destaqueClaro transition-colors">Quem Somos</a></li><li><a href="#contato" onclick="navigate('contato')" class="hover:text-destaqueClaro transition-colors">Contato</a></li></ul></div>
+                <div class="col-span-1 md:col-span-2"><h4 class="text-white font-bold mb-4 uppercase tracking-wider text-xs">Contato</h4><p><i class="fa-solid fa-location-dot w-5 text-center mr-2 text-gray-500"></i>Limeira, SP, Brasil</p><p class="mt-2"><i class="fa-solid fa-envelope w-5 text-center mr-2 text-gray-500"></i> setmineral@setmineral.com.br</p></div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+                <p>&copy; 2024 SET Soluções. Todos os direitos reservados.</p>
+                <div class="mt-4 md:mt-0"><a href="https://www.linkedin.com/company/set-mineral/" target="_blank" class="text-gray-400 hover:text-white transition-colors text-2xl" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5519999787408" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-lg hover:scale-110 hover:bg-[#20bd5a] transition-all" aria-label="Falar no WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- Scripts de Interação Básica -->
+    <script>
+        // Navegação SPA simples
+        function navigate(pageId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo(0, 0);
+        }
+        // Toggle do Menu Mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
